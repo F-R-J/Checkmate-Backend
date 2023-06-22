@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkmate</title>
+    <link rel="icon" href="/img/checkmate.jpg" type="image/gif" />
+    <!--bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!--bootstrap js-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- general library    -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    {{!-- font awesome --}}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+
+    <!-- pug will look in the folder set up in express.static-->
+    <link rel="stylesheet" href="/lib/chessboardjs/css/chessboard-0.3.0.min.css" />
+    <script src="/lib/chessboardjs/js/chessboard-0.3.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
+    <script src="/js/board.js"></script>
+    <script src="/js/enginegame.js"></script>
+    <script src="/js/main.js"></script>
+    {{!--
+    <script src="/js/username.js"></script> --}}
+    <script src="/js/socketClient.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <link rel="stylesheet" href="/css/main.css" />
+    <!-- general JS-->
+    {{!--
+    <script src="/js/layout.js"></script> --}}
+
+</head>
+
+<body>
+    <div class="fluid-container" style="width: 98%">
+        <div class="row">
+            <div class="col-sm-3">
+                {{!-- block menu --}}
+                <div class="container-fluid">
+                    <h2 class="😠">Checkmate</h2><br>
+                    <div class="row">
+                        <button class="btn btn-primary" style="margin-left:10px" id="newGameButton">New Game</button>
+                    </div>
+                    <div class="row" style="margin-top:20px; margin-bottom:20px;">
+                        <h1 id="Name">{{{uid}}}</h1>
+                        
+                        <form id="nameForm" method="">
+                            <label>Enter Your Name</label>
+                            <input class="chat-box" id="nameInput" type="text" /><span>
+                                <button class="btn btn-primary" type="submit">Enter Name</button></span>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form id="joinGame" method="">
+                            <label style="color:white;font-size: 20px;margin-left:10px">Enter Host Name</label>
+                            <input class="chat-box" id="hostName" type="text" autocomplete="off" /><span>
+                                <button class="btn btn-primary" style="margin: 10px;background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);" type="submit">Join
+                                    Host</button></span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5" style="text-align:center;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h3 class="😎" id="name"></h3>
+                    </div>
+                    <div class="row">
+                        <div id="board" style="width:650px;padding-top:40px; margin:auto;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" id="OnlineList">
+                <h2 id="OP😎">Online Players</h2>
+                <ul class="list-group" id="onlinePlayers">
+                    <li class="list-group-item">
+                    </li>
+                </ul>
+            </div>
+
+            <h2 id="mode">{{{mode}}}</h2>
+            <div class="col-sm-4" id="kotha">
+                <div class="container-fluid">
+                    <div class="row window info headline">
+                        <!-- Info data-->
+                        <h3 id="headline" style="text-align:center; width:100%; ">Messages</h3>
+                    </div>
+                    <div class="row window moves-history over headline">
+                        <ul class="messages-window" id="messages" data-spy="scroll"></ul>
+                    </div>
+                    <div class="row window chat-box-container headline">
+                        <form id="chatBox" method="" autocomplete="off">
+                            <input class="chat-box" id="chat" type="text" required><span>
+                                <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"> Send</i> </button></span>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+body {
+  padding: 5px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: linear-gradient(to right, #000428, #004e92);
+}
+
+.sidebar-nav {
+  padding: 0;
+  list-style: none;
+}
+
+.nav-button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #00B7FF;
+  text-align: center;
+}
+
+.nav-button:hover {
+  border-right: 3px solid #00B7FF;
+  transition-duration: 250ms;
+  cursor: pointer;
+}
+
+.chat-box {
+  padding: 5px 5px;
+  /* size: 50; */
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.😠 {
+  text-align: left;
+  background-color: #ff8177;
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.😎 {
+  margin: 15px;
+  text-align: center;
+  width: 100%;
+  background-color: #ff8177;
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+#newGameButton {
+  background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+}
+
+.over{
+  overflow: auto;
+}
+
+.headline{
+  background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+  padding: 0px;
+  margin: 0px;
+}
+
+#OnlineList{
+  /* background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); */
+  color: white;
+  padding: 0px;
+  margin: 15px;
+  padding-bottom: 10px;
+}
+#OP😎{
+  margin: 0px;
+  text-align: center;
+  width: 100%;
+  background-color: #ff8177;
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.onlineGameRequest{
+  background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+.list-group-item{
+  text-align: center;
+  background: #004e92;
+  box-shadow: none;
+}
