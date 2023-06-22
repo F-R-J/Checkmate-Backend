@@ -1,3 +1,3 @@
-SDP-3_Game_Site
+# Checkmate 
 
-CHESS game folder and site
+A chess game website.
