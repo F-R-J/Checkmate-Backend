@@ -4,9 +4,10 @@ var favicon = require("serve-favicon");
 var logger = require("morgan");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
-const mysql = require('mysql')
+//const mysql = require('mysql')
+const db = require('./db/db')
 var session = require("express-session");
-var MySQLStore = require("express-mysql-session")(session);
+var MySQLStore = require('connect-mongo')(session);
 var compression = require("compression");
 var helmet = require("helmet");
 var index = require("./routes/index");
@@ -49,47 +50,27 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(compression());
 app.use(helmet());
 
-var options = {
-  host:'localhost',
-  port: 3306,
-  user: 'root',
-  password: '',
-  database: 'checkmate',
-};
-
-var connection = mysql.createConnection(options);
-var sessionStore = new MySQLStore(
-  {
-    expiration: 10800000,
-    createDatabaseTable: true,
-    schema: {
-      tableName: "sessiontblgamesite",
-      columnNames: {
-        session_id: "session_id",
-        expires: "expires",
-        data: "data",
-      },
-    },
-  },
-  connection
-);
-
 app.use(
   session({
-    key: "checkmategame",
+    key: "checkmate",
     secret: "sdp@checkmate",
-    store: sessionStore,
     resave: false,
     saveUninitialized: true,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24
+      maxAge: 86400000
     },
+    store: new MySQLStore({
+      url: 'mongodb+srv://arrahat777:beaking12@mernfirst.k4myuar.mongodb.net/techNotesDB?retryWrites=true&w=majority',
+      ttl: 14 * 24 * 60 * 60,
+      autoRemove: 'native'
+    })
   })
 );
 
 
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
+db.init();
 
 // app.use("/index", index);
 // app.get("/*", (req, res) => {

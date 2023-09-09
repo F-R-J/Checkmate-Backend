@@ -1,10 +1,11 @@
 const express = require("express");
 const database = require('../db/db')
+const Session = require("../db/models/chessSchema")
 const fs = require("fs");
 //const uid = require('../username')
 const router = express.Router();
 
-const setuser = (req,res,next)=>{
+const setuser = async (req,res,next)=>{
   var cookies=(function(str){ 
     var result={};
     str.split(/;\s+/).forEach(function(e){
@@ -16,23 +17,31 @@ const setuser = (req,res,next)=>{
   sessionCookieName='checkmate',
   sessionId=cookies[sessionCookieName]||'nothing';
   sessionId = sessionId.slice(4).trim();
-  var id = sessionId.split('.',2);
-  database.query(
-    "Select * from sessiontbl where session_id=?",[id[0]], async (error,result) =>{
-      if(error){
-        console.log(error)
-      }
-      else{
-        if(result.length > 0){
-          const user1 = JSON.parse(result[0].data.toString())
-          console.log(user1.Uid)
-          req.session.uid = user1.Uid;
-          console.log("In set userid");
-          console.log(req.session.uid);
-        }
-      }
-    } 
-  )
+  var idd = sessionId.split('.',2);
+  console.log(idd);
+  let user = await Session.findOne({ID: idd[0] });
+  if(user){
+    console.log(user);
+    req.session.uid = user.uid;
+  }else{
+    console.log("no user");
+  }
+  // database.query(
+  //   "Select * from sessiontbl where session_id=?",[id[0]], async (error,result) =>{
+  //     if(error){
+  //       console.log(error)
+  //     }
+  //     else{
+  //       if(result.length > 0){
+  //         const user1 = JSON.parse(result[0].data.toString())
+  //         console.log(user1.Uid)
+  //         req.session.uid = user1.Uid;
+  //         console.log("In set userid");
+  //         console.log(req.session.uid);
+  //       }
+  //     }
+  //   } 
+  // )
   next()
 }
 //setuser

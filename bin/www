@@ -18,7 +18,7 @@ var socketServer = require("../controllers/socketServer");
 //   console.log("res:\n" + res)
 // }))
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort('3000');
 //var port =process.env.PORT || '3000';
 app.set('port', port);
 
