@@ -1,0 +1,12 @@
+services:
+  - name: your-app
+    buildCommand: npm install
+    startCommand: node ./bin/www
+    env:
+      - key: NODE_ENV
+        value: production
+    routes:
+      - type: web
+        port: 3000  # Adjust this based on your application's port
+      - type: tcp
+        port: 3001  # Adjust this based on your WebSocket server's port
